@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <title>Shoe Store</title>
+  <meta charset="utf-8">
+</head>
+<body>
+
+  <div class="container">
+    <nav>
+      <h1>
+        <a class="home-link" href="/">
+          <i class="fas fa-menorah"></i> Sababa
+        </a>
+      </h1>
+
+      <form>
+        <input type="text" name="search">
+        <input type="submit" name="submit">
+      </form>
+    </nav>
+
+    <ul class="product-list">
+      {% for product in products %}
+      <li>
+        <img src="{{ url_for('static', filename='images/shoes/') }}{{ product.image }}">
+        <h3 class="product-name">{{ product.name }}</h3>
+        <h3 class="price-label">${{ product.price }}</h3>
+        <a href="/products/{{ product.id }}" class="link-button">see more</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+</body>
+</html>
